@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RTO MANAGEMENT SYSTEM</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
+/>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  
+  
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  .loader_bg {
+    position: fixed;
+    z-index: 9999999;
+    background: #fff;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .loader {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .loader img {
+    width: 280px;
+  }
+  
+  
+  ::-webkit-scrollbar-thumb {
+    border-radius: 12px;
+    background: linear-gradient(135deg, #f57308, #fff, rgb(11, 242, 7));
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #09418a, #fff, rgb(245, 5, 53));
+  }
+  
+  
+  
+  section {
+    padding: 100px 0;
+  }
+  
+  .max-width {
+    max-width: 2000px;
+    padding: 0 80px;
+    margin: auto;
+  }
+  
+  
+  .ABOUT-RTO .ABOUT-RTO-content,
+  .ACTS-RULES.ACTS-RULES-content,
+  .SERVICE .CITIZEN-SERVICE-content,
+  .ROAD_SAFETY.ROAD_SAFETY-content,
+  .CONTACT.contact-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  section .title {
+    position: relative;
+    text-align: center;
+    font-size: 40px;
+    font-weight: 500;
+    margin-bottom: 60px;
+    padding-bottom: 20px;
+    font-family: "Ubuntu", sans-serif;
+  }
+  
+  section .title::before {
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    width: 180px;
+    height: 3px;
+    transform: translateX(-50%);
+  }
+  
+  section .title::after {
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    font-size: 20px;
+    color: #1e3551;
+    padding: 0 5px;
+    transform: translateX(-50%);
+  }
+  
+  
+  .navbar {
+    position: fixed;
+    width: 100%;
+    z-index: 999;
+    padding: 30px 0;
+    font-family: "Ubuntu", sans-serif;
+    transition: all 0.3s ease;
+    background-color: rgb(15, 1, 1);
+    z-index:1000;
+  }
+  
+  .navbar.sticky {
+    padding: 15px 0;
+    background: #fcd4d4;
+  }
+  
+  .navbar .max-width {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .navbar .logo {
+  font-size: 35px;
+  font-weight: bold;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+   color: whitesmoke;
+   border-style: ridge;
+   border-width: 6PX;
+   border-color:hsl(0, 10%, 67%);
+  }
+  .navbar .logo a {
+    color: rgb(255, 255, 255);
+    font-size: 35px;
+    font-weight: 600;
+  }
+  .navbar .menu li a {
+    display: block;
+    color: hsl(0, 0%, 100%);
+    font-size: 18px;
+    font-weight: 500;
+    margin-left: 25px;
+    transition: color 0.3s ease;
+  }
+  
+  .navbar.sticky .logo a span {
+    color: hsl(0, 0%, 100%);
+  }
+  
+  .navbar .menu li {
+    list-style: none;
+    display: inline-block;
+  }
+  
+  .navbar .menu li a {
+    display: block;
+    color: hsl(0, 0%, 100%);
+    font-size: 18px;
+    font-weight: 500;
+    margin-left: 25px;
+    transition: color 0.3s ease;
+  }
+  
+  .navbar .menu li a:hover {
+    color:whitesmoke
+  }
+  
+  .navbar.sticky .menu li a:hover {
+    color: whitesmoke;
+  }
+  
+  
+  
+  .menu-btn {
+    color: rgb(24, 2, 2);
+    font-size: 23px;
+    cursor: pointer;
+    display: none;
+  }
+  
+  .scroll-up-btn {
+    position: fixed;
+    height: 45px;
+    width: 42px;
+    background:#000000;
+    right: 30px;
+    bottom: 10px;
+    text-align: center;
+    line-height: 45px;
+    color: #fff;
+    z-index: 9999;
+    font-size: 30px;
+    border-radius: 6px;
+    border-bottom-width: 2px;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+  }
+  
+  .scroll-up-btn.show {
+    bottom: 30px;
+    opacity: 1;
+    pointer-events: auto;
+  }
+  
+  .scroll-up-btn:hover {
+    filter: brightness(90%);
+  }.home {
+    display: flex;
+   background-image: url("about1.jpg");
+    color: rgb(15, 1, 1);
+  
+  
+    font-family: "Ubuntu", sans-serif;
+  
+    text-align: center;
+   
+    border-style: groove;
+    
+    border-color: #000000;
+  
+    border-left: 7px;
+    border-right: 7px;
+  }
+  .home .max-width {
+    width: 100%;
+    display: flex;
+  }
+  .home .max-height{
+    height:100px;
+  }
+  
+  .home .max-width .row {
+    margin-right: 0;
+  }
+  
+  .home .home-content .img {
+   margin-left: 1000px;
+    align-items: center;
+  }
+  
+  
+  
+  .home .home-content .text-2 {
+    text-align:center;
+    font-size: 40px;
+    font-weight: 60;
+    margin-left: -3px;
+  color:black;
+   font-family: Georgia, 'Times New Roman', Times, serif;
+  text-decoration: underline;
+   
+  }
+  .home .home-content .text-3 {
+    text-align:center;
+    margin-right:700px;
+    font-size: 30px;
+    margin: 5px 0;
+    color:#000000 ;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-decoration: underline;
+    
+  }  
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
+  *{
+     
+      
+  font-family: 'Poppins', sans-serif;
+  }
+  
+  .main{
+  
+    border-style: ridge;
+    border-width: 4px;
+    border-color: #000000;
+    display: flex;
+    height: 120vh;
+    justify-content: center;
+    align-items: center;
+    
+    background-color: hwb(228 70% 28%);
+  }
+  .container{
+      max-width: 700px;
+      width: 100%;
+      background: #fff;
+      padding: 55px 35px;
+      border-radius: 5px;
+      text-align: center;
+      text-decoration: underline;
+  }
+  
+  .container .title{
+      font-size: 25px;
+      font-weight: 500;
+      position: relative;
+      text-align: center;
+      text-decoration: underline;
+  }
+  
+  .container .title::before{
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 3px;
+      width: 30px;
+      background-color: #4070f4;
+      text-align: center;
+  }
+  
+  .container form .user-details{
+       display: flex;
+       flex-wrap: wrap;
+       justify-content: space-between;
+  }
+  
+  form .user-details .input-box{
+      margin: 20px 0 12px 0;
+      width: calc(100% / 2 - 20px);
+  
+  }
+  
+  .user-details .input-box .details{
+      display: block;
+      font-weight: 500;
+      margin-bottom: 5px;
+  }
+  
+  .user-details .input-box input{
+      height: 30px;
+      width: 95%;
+      outline: none;
+      border-radius: 5px;
+      border: 1px solid grey;
+      padding-left: 13px;
+      font-size: 15px;
+  }
+  
+  form .user-details .button{
+      padding-top: 35px;
+      padding-left: 14px;
+      text-align: center;
+     
+      
+  }
+  
+  .btn{
+      text-align: center;
+      justify-content: space-between;
+      width: 200px;
+      height: 45px;
+      font-size: 18px;
+      background-color: #4070f4;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+      font-family: Arial;
+  
+  }
+  
+  
+  .file-upload-field{
+      
+      line-height: 35px;
+      font-size: 13px;
+      width: 35%;
+      border-radius: 45px;
+  }
+  
+  
+  
+  .name{
+      line-height: 35px;
+      font-size: 15px;
+      width: 50%;
+      border-radius: 45px;
+      outline: none;
+      
+  }
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: "Poppins", sans-serif;
+  }
+  
+  a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .footer {
+    width: 100%;
+    height: 250px;
+  
+    padding: 10px;
+  
+    background-color: #252525;
+    color: #fff;
+  
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  
+  .col {
+    padding: 20px 0;
+  }
+  
+  .footer-logo {
+    width: 200px;
+    height: 100%;
+  }
+  
+  .footer-header {
+    font-size: 18px;
+    position: relative;
+  }
+  
+  .list {
+    list-style: none;
+  }
+  
+  .list li {
+    font-size: 14px;
+  }
+</style>
+</head>
+<body>
+    <div class="scroll-up-btn">
+        <i class="fas fa-angle-up"></i>
+      </div>
+    
+      <!-- --x--------------------------- Scroll Bar ---------------------------x-- -->
+    
+      <!-- ------------------------------ Header ------------------------------ -->
+    
+      <nav class="navbar">
+        <div class="max-width">
+          <div class="logo"><a href="#"><b>RTO</b></a></div>
+          <ul class="menu">
+            <li><a href="/"class="menu-btn"><strong>HOME</strong></a></li>
+           <li><a href="/about" class="menu-btn"><strong>ABOUT</strong></a></li>
+            <li><a href="/acts" class="menu-btn"><strong>ACTS&RULES</strong></a></li>
+            <li><a href="/services" class="menu-btn"><strong>CITIZEN SERVICE</strong></a></li>
+            <li><a href="/safety" class="menu-btn"><strong>ROAD SAFETY</strong></a></li>
+            <li><a href="/complaint" class="menu-btn"><strong>COMPLAINTS</strong></a></li>
+            <li><a href="/contact" class="menu-btn"><strong>CONTACT</strong></a></li>
+            
+          </ul>
+          <div class="menu-btn">
+            <i class="fas fa-bars"></i>
+          </div>
+      
+        </div>
+      </nav>
+      <section class="home" id="home">
+        <div class="max-width">
+            <div class="max-height">
+          <div class="home-content">
+           <div  class="img" ><img src="logo.jpg" align="right" ></div>
+          <br><br><br>  <div class="text-2">REGIONAL TRANSPORT OFFICE</div>
+            <div class="text-3">MAHARAHSTRA</div></div>
+        </div>
+    </div>  
+    </div>
+        </section>
+        <div class="main">
+        <div class="container">
+            <div class="title">Contact Us</div> 
+            <form action="/contacts1">
+                <div class="user-details">
+                    <div class="input-box"> 
+                        <span class="details">Name</span>
+                         <input type="text" id="Name" name="Name" class="name" placeholder="Enter your name" required>
+                     </div>
+    
+                     <div class="input-box"> 
+                        <span class="details">Date of Birth</span>
+                         <input type="date" id="DOB" name="DOB" class="name" placeholder="dd-mm-yyyy">
+                     </div>
+                    
+    
+                     <div class="input-box"> 
+                        <span class="details">E-mail id</span>
+                         <input type="text" id="Email" name="Emailid"class="name" placeholder="Enter your email" required>
+                     </div>
+    
+                     <div class="input-box"> 
+                        <span class="details">Mobile number</span>
+                         <input type="text" id="mobilenumber" name="Mobilenumber"class="name" placeholder="Enter your number" required>
+                     </div>
+                     <div class="input-box"> 
+                      <span class="details" id="Gender">Gender</span>
+                      <select required name="gender" class="name">
+                          <option disabled selected>Select Gender</option>
+                          <option>Male</option>
+                          <option>Female</option>
+                          <option>Prefer not to say</option>
+                          
+                     </select> </div>
+                     <div class="input-box">
+                        <span class="details" id="Message">Message</span>
+                      <input type="textarea" id="textarea" name="Message" placeholder="Enter your message here..." cols="33"
+                            rows="5"></input>
+                    </div>
+    
+                    
+                      
+               
+                    <div class="button">
+                      <input type="submit" class="btn" value="Submit">
+                    </div>
+    
+            </form>
+                
+                
+        </div>   
+        </div>
+    </div>
+        <div class="footer">
+
+            <div>
+             
+              <img src="logo2footer.jpg" alt="RTO Logo" class="footer-logo" />
+            </div>
+            <div class="col">
+              <h4 class="footer-header">Pages</h4>
+              <h4 class="footer-header"></h4>
+      
+              <br />
+      
+              <ul class="list">
+                <li><a href="#">Home Page</a></li>
+                <li><a href="#">Services Page</a></li>
+                <li><a href="#">About Page</a></li>
+                <li><a href="#">Contact Page</a></li>
+              </ul>
+            </div>
+            <div class="col">
+              <h4 class="footer-header">Get Help</h4>
+      
+              <br />
+      
+              <ul class="list">
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Account Recovery</a></li>
+                <li><a href="#">Payment Options</a></li>
+              </ul>
+            </div>
+          </div>
+</body>
+</html>

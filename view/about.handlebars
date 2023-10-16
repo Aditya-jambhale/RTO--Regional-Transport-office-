@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RTO MANAGEMENT SYSTEM</title>
+   
+   
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+ <style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  
+  
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  .loader_bg {
+    position: fixed;
+    z-index: 9999999;
+    background: #fff;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .loader {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .loader img {
+    width: 280px;
+  }
+  
+  
+  ::-webkit-scrollbar-thumb {
+    border-radius: 12px;
+    background: linear-gradient(135deg, #f57308, #fff, rgb(11, 242, 7));
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #09418a, #fff, rgb(245, 5, 53));
+  }
+  
+  
+  
+  section {
+    padding: 100px 0;
+  }
+  
+  .max-width {
+    max-width: 2000px;
+    padding: 0 80px;
+    margin: auto;
+  }
+  
+  
+  .ABOUT-RTO .ABOUT-RTO-content,
+  .ACTS-RULES.ACTS-RULES-content,
+  .SERVICE .CITIZEN-SERVICE-content,
+  .ROAD_SAFETY.ROAD_SAFETY-content,
+  .CONTACT.contact-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  section .title {
+    position: relative;
+    text-align: center;
+    font-size: 40px;
+    font-weight: 500;
+    margin-bottom: 60px;
+    padding-bottom: 20px;
+    font-family: "Ubuntu", sans-serif;
+  }
+  
+  section .title::before {
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    width: 180px;
+    height: 3px;
+    transform: translateX(-50%);
+  }
+  
+  section .title::after {
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    font-size: 20px;
+    color: #1e3551;
+    padding: 0 5px;
+    transform: translateX(-50%);
+  }
+  
+  
+  .navbar {
+    position: fixed;
+    width: 100%;
+    z-index: 999;
+    padding: 30px 0;
+    font-family: "Ubuntu", sans-serif;
+    transition: all 0.3s ease;
+    background-color: rgb(15, 1, 1);
+    z-index:1000;
+  }
+  
+  .navbar.sticky {
+    padding: 15px 0;
+    background: #fcd4d4;
+  }
+  
+  .navbar .max-width {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .navbar .logo {
+  font-size: 35px;
+  font-weight: bold;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+   color: whitesmoke;
+   border-style: ridge;
+   border-width: 6PX;
+   border-color:hsl(0, 10%, 67%);
+  }
+  .navbar .logo a {
+    color: rgb(255, 255, 255);
+    font-size: 35px;
+    font-weight: 600;
+  }
+  .navbar .menu li a {
+    display: block;
+    color: hsl(0, 0%, 100%);
+    font-size: 18px;
+    font-weight: 500;
+    margin-left: 25px;
+    transition: color 0.3s ease;
+  }
+  
+  .navbar.sticky .logo a span {
+    color: hsl(0, 0%, 100%);
+  }
+  
+  .navbar .menu li {
+    list-style: none;
+    display: inline-block;
+  }
+  
+  .navbar .menu li a {
+    display: block;
+    color: hsl(0, 0%, 100%);
+    font-size: 18px;
+    font-weight: 500;
+    margin-left: 25px;
+    transition: color 0.3s ease;
+  }
+  
+  .navbar .menu li a:hover {
+    color:whitesmoke
+  }
+  
+  .navbar.sticky .menu li a:hover {
+    color: whitesmoke;
+  }
+  
+  
+  
+  .menu-btn {
+    color: rgb(24, 2, 2);
+    font-size: 23px;
+    cursor: pointer;
+    display: none;
+  }
+  
+  .scroll-up-btn {
+    position: fixed;
+    height: 45px;
+    width: 42px;
+    background:#000000;
+    right: 30px;
+    bottom: 10px;
+    text-align: center;
+    line-height: 45px;
+    color: #fff;
+    z-index: 9999;
+    font-size: 30px;
+    border-radius: 6px;
+    border-bottom-width: 2px;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+  }
+  
+  .scroll-up-btn.show {
+    bottom: 30px;
+    opacity: 1;
+    pointer-events: auto;
+  }
+  
+  .scroll-up-btn:hover {
+    filter: brightness(90%);
+  }.home {
+    display: flex;
+   background-image: url("about1.jpg");
+    color: rgb(15, 1, 1);
+  
+ 
+    font-family: "Ubuntu", sans-serif;
+ 
+    text-align: center;
+   
+    border-style: groove;
+    
+    border-color: #000000;
+
+    border-left: 7px;
+    border-right: 7px;
+  }
+  .home .max-width {
+    width: 100%;
+    display: flex;
+  }
+  .home .max-height{
+    height:100px;
+  }
+  
+  .home .max-width .row {
+    margin-right: 0;
+  }
+  
+  .home .home-content .img {
+   margin-left: 1000px;
+    align-items: center;
+  }
+
+
+  
+  .home .home-content .text-2 {
+    text-align:center;
+    font-size: 40px;
+    font-weight: 60;
+    margin-left: -3px;
+  color:black;
+   font-family: Georgia, 'Times New Roman', Times, serif;
+text-decoration: underline;
+   
+  }
+  .home .home-content .text-3 {
+    text-align:center;
+    margin-right:700px;
+    font-size: 30px;
+    margin: 5px 0;
+    color:#000000 ;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-decoration: underline;
+    
+  }  
+.content{
+  border-style: groove;
+  border-width: 7px;
+  border-color: #000000;
+
+  }
+   .content .heading{
+    text-align:center;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: #000000;
+    text-decoration:underline;
+  }
+   .content .heading2{
+    text-align: center;
+    text-decoration: underline;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: #000000;
+  }
+  .content .info{
+    text-align: justify;
+    margin-right: 10vw;
+    margin-left: 10vw;
+  }
+  .content .info2{
+    text-align:justify;
+    margin-right: 10vw;
+    margin-left: 10vw;
+
+  }
+  .image{
+   text-align: center;
+   text-decoration: underline;
+   border-style: ridge;
+   border-width: 7px;
+   border-color: #000000;
+  }
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: "Poppins", sans-serif;
+  }
+  
+  a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .footer {
+    width: 100%;
+    height: 250px;
+  
+    padding: 10px;
+  
+    background-color: #252525;
+    color: #fff;
+  
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  
+  .col {
+    padding: 20px 0;
+  }
+  
+  .footer-logo {
+    width: 200px;
+    height: 100%;
+  }
+  
+  .footer-header {
+    font-size: 18px;
+    position: relative;
+  }
+  
+  .list {
+    list-style: none;
+  }
+  
+  .list li {
+    font-size: 14px;
+  }
+ </style>
+
+</head>
+<body>
+ 
+    <div class="scroll-up-btn">
+        <i class="fas fa-angle-up"></i>
+      </div>
+    
+      <!-- --x--------------------------- Scroll Bar ---------------------------x-- -->
+    
+      <!-- ------------------------------ Header ------------------------------ -->
+    
+      <nav class="navbar">
+        <div class="max-width">
+          <div class="logo"><a href="#"><b>RTO</b></a></div>
+          <ul class="menu">
+            <li><a href="/" class="menu-btn"><strong>HOME</strong></a></li>
+           <li><a href="/about" class=""><strong>ABOUT</strong></a></li>
+            <li><a href="/acts"class="menu-btn"><strong>ACTS&RULES</strong></a></li>
+            <li><a href="/services" class="menu-btn"><strong>CITIZEN SERVICE</strong></a></li>
+            <li><a href="/safety" class="menu-btn"><strong>ROAD SAFETY</strong></a></li>
+            <li><a href="/complaint" class="menu-btn"><strong>COMPLAINTS</strong></a></li>
+            <li><a href="/contact" class="menu-btn"><strong>CONTACT</strong></a></li>
+          </ul>
+          <div class="menu-btn">
+            <i class="fas fa-bars"></i>
+          </div>
+      
+        </div>
+      </nav>
+      <section class="home" id="home">
+        <div class="max-width">
+            <div class="max-height">
+          <div class="home-content">
+           <div  class="img" ><img src="logo.jpg" align="right" ></div>
+          <br><br><br>  <div class="text-2">REGIONAL TRANSPORT OFFICE</div>
+            <div class="text-3">MAHARAHSTRA</div></div>
+        </div>
+    </div>  
+    </div>
+        </section>
+         <form action="/about">
+            <!-----about------>
+            <div class="content">
+            
+                    <div class="heading">
+                   <br> <h1>OBJECTIVE OF ESTABLISHMENT OF RTO</h1><br>
+                    </div>
+                    <p class="info">
+                    Due to the industrial development in the state, there has been a huge stress on the transport services in the rural and urban areas. Similarly, two-wheelers, four-wheelers etc. are continuously increasing for fast transportation. At the same time, increasing road congestion, increasing number of accidents, air pollution etc. have also started increasing strongly. There has been a tremendous increase in the work of up-to-date communication services, road vehicles, air pollution, vehicle registration, inspection, driver's licenses etc. Motor Vehicle Departments have been created to handle these tasks and to enforce the rules framed under the Motor Vehicles Act, 1988, tax laws and passenger tax laws etc.<br>
+                    </P>
+                    <br>
+                    <div class="heading2">
+                    <h2>WHAT IS RTO AND HOW IT FUNCTIONS</h2>
+                    </div>
+                    <br>
+                    <p class="info2">
+                    The Regional Transport Office or District Transport Office or Regional Transport Authority (RTO/DTO/RTA) is the organisation of the Indian government responsible for maintaining a database of drivers and a database of vehicles for various states of India. The RTO issues driving licences, organises collection of vehicle excise duty (also known as road tax and road fund licence) and sells personalised registrations. 
+                    Along with this, the RTO is also responsible to inspect vehicle's insurance and clear the pollution test. 
+                    Function of RTO:
+                    <br>
+                    1.	To enforce the provisions of the various acts of motor vehicles, central motor vehicle rules and the State motor vehicle rules as laid down by the government from time to time.
+                    <br>
+                    2.	To ensure that co-ordinated development of road transport through management of permit.
+                    <br>
+                    3.	To charge and collect tax as per the provisions of the motor vehicle act.
+                    <br>
+                    4.	To enforce road safety and bring in new amendments into force with relation to the Indian Motor Vehicle Act 1988.
+                    <br>
+                    The officer ranks are categorized as: (Rank from lower to higher, Mostly known by different names for designations across different states)
+                    <br>            
+                    1.	Junior Inspector of Motor Vehicles
+                    <br>
+                    2.	Senior Inspector of Motor Vehicles
+                    <br>
+                    3.	Assistant Regional Transport Officer
+                    <br>
+                    4.	Regional Transport Officer
+                    <br>
+                    Followed by other top level officers acting as Administrators for the Department
+                    
+                </P><br><br>
+            </div>
+                <div class="image">
+<br><h1>STRUCTURE OF MOTOR VEHICLES</h1><br><br>
+                    <img src="RTO structure.jpg">
+                </div>
+                <div class="footer">
+
+                  <div>
+                   
+                    <img src="logo2footer.jpg" alt="RTO Logo" class="footer-logo" />
+                  </div>
+                  <div class="col">
+                    <h4 class="footer-header">Pages</h4>
+                    <h4 class="footer-header"></h4>
+            
+                    <br />
+            
+                    <ul class="list">
+                      <li><a href="#">Home Page</a></li>
+                      <li><a href="#">Services Page</a></li>
+                      <li><a href="#">About Page</a></li>
+                      <li><a href="#">Contact Page</a></li>
+                    </ul>
+                  </div>
+                  <div class="col">
+                    <h4 class="footer-header">Get Help</h4>
+            
+                    <br />
+            
+                    <ul class="list">
+                      <li><a href="#">FAQ</a></li>
+                      <li><a href="#">Account Recovery</a></li>
+                      <li><a href="#">Payment Options</a></li>
+                    </ul>
+                  </div>
+                </div>
+         
+  </form>
+</body>
+</html>

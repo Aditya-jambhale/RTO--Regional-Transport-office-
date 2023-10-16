@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>registration </title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    
+    font-family: 'Poppins', sans-serif;
+}
+
+
+body {
+   display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    padding-top: 1px;
+    background-color: hwb(226 65% 28%);
+}
+
+.container{
+    max-width: 500px;
+    width: 100%;
+    background: #fff;
+    margin: 50px auto;
+    border-radius: 5px;
+    padding: 30px;
+}
+
+.container .title{
+    font-size: 25px;
+    font-weight: 700;
+    position: relative;
+    text-align: center;
+    text-decoration: underline;
+}
+.container .title::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 30px;
+    background-color: #4070f4;
+}
+
+.container form .user-details{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        
+   }
+   
+   form .user-details .input-box{
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+   }
+   
+   .user-details .input-box .details{
+      
+      width: 200px;
+      color: black;
+      margin-right: 10px;
+      font-size: 14px;
+      text-decoration: underline;
+   }
+   
+   .user-details .input-box input{
+       height: 30px;
+       width: 95%;
+       outline: none;
+       border-radius: 5px;
+       border: 1px solid grey;
+       padding-left: 10px;
+       font-size: 15px;
+   }
+   
+   form .user-details .button{
+       padding-top: 35px;
+       margin-left:140px;
+       text-align: center;
+
+       
+   }
+   
+   .btn{
+       text-align: center;
+       justify-content: space-between;
+       width: 200px;
+       height: 35px;
+       font-size: 18px;
+       background-color: #4070f4;
+       border: none;
+       border-radius: 5px;
+       color: white;
+       cursor: pointer;
+       font-family: Arial;
+   
+   }
+   
+   
+   .file-upload-field{
+       
+       line-height: 35px;
+       font-size: 13px;
+       width: 35%;
+       border-radius: 45px;
+   }
+   
+   
+   
+   .name{
+       line-height: 35px;
+       font-size: 15px;
+       width: 50%;
+       border-radius: 45px;
+       outline: none;
+       
+   }
+  </style>
+
+</head>
+<body>
+    
+    <div class="container">
+        <div class="title">Registration of Vehicle</div> <br>
+        <form action="/register">
+            <div class="user-details">
+                <div class="input-box"> 
+                    <span class="details"> First Name :</span>
+                     <input type="text" name="firstname"class="fname" placeholder="Enter first name" required>
+                 </div>
+                 <div class="input-box"> 
+                    <span class="details">Last Name :</span>
+                     <input type="text" name="lastname"class="name" placeholder="Enter last name" required>
+                 </div>
+                 <div class="input-box"> 
+                    <span class="details">City :</span>
+                     <input type="text" name="city" class="name" placeholder="Enter city name" required>
+                 </div>
+                <div class="input-box"> 
+                    <span class="details">Vehicle name :</span>
+                     <input type="text" name="vehiclename"class="name" placeholder="Enter  vehicle name" required>
+                 </div>
+
+                 <div class="input-box"> 
+                    <span class="details">Vehicle platenumber:</span>
+                     <input type="text" name="platenumber"class="name" placeholder="Enter number" required>
+                 </div>
+
+                 <div class="input-box"> 
+                    <span class="details">Vehicle Type :</span>
+                     <input type="text" name="vehicletype" class="name" placeholder=" car,bike,scooty" required>
+                 </div>
+       
+           
+                <div class="button">
+                  <input type="submit" class="btn" value="Submit">
+                </div>
+
+        </form>
+            
+            
+    </div>   
+                  
+                   
+    
+</body>
+</html>
