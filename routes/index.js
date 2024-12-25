@@ -1,36 +1,36 @@
-const express=require('express');
-const router=express.Router();
-const connection= require('../config/connection').connection;
+const express = require('express');
+const router = express.Router();
+const connection = require('../config/connection').connection;
 
-router.get("/",(req,res)=>{
+router.get("/", (req, res) => {
     res.render("index");
 });
-router.get("/about",(req,res)=> {
+router.get("/about", (req, res) => {
     res.render("about");
 });
-router.get("/safety",(req,res)=> {
+router.get("/safety", (req, res) => {
     res.render("safety");
 });
-router.get("/acts",(req,res)=>{
+router.get("/acts", (req, res) => {
     res.render("acts");
 });
-router.get("/complaint",(req,res)=>{
+router.get("/complaint", (req, res) => {
     res.render("complaint");
 });
 
-router.get("/contact",(req,res)=>{
+router.get("/contact", (req, res) => {
     res.render("contact");
 });
-router.get("/renewal",(req,res)=>{
+router.get("/renewal", (req, res) => {
     res.render("renewal");
 });
-router.get("/register",(req,res)=>{
+router.get("/register", (req, res) => {
     res.render("register");
 });
-router.get("/services",(req,res)=>{
+router.get("/services", (req, res) => {
     res.render("services");
 });
-router.get("/licence1",(req,res)=>{
+router.get("/licence1", (req, res) => {
     res.render("licence");
 });
 module.exports = router;

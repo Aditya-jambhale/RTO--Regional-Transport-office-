@@ -1,521 +1,551 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    
-      
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
-      rel="stylesheet"
-    />
-    <link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
-/>
-<style>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    text-decoration: none;
-  }
-  
-  html {
-    scroll-behavior: smooth;
-  }
-  
-  
-  
-  ::-webkit-scrollbar {
-    width: 6px;
-  }
-  
-  ::-webkit-scrollbar-track {
-    background: #f1f1f1;
-  }
-  
-  .loader_bg {
-    position: fixed;
-    z-index: 9999999;
-    background: #fff;
-    width: 100%;
-    height: 100%;
-  }
-  
-  .loader {
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    left: 0;
-    top: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .loader img {
-    width: 280px;
-  }
-  
-  
-  ::-webkit-scrollbar-thumb {
-    border-radius: 12px;
-    background: linear-gradient(135deg, #f57308, #fff, rgb(11, 242, 7));
-  }
-  
-  ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(135deg, #09418a, #fff, rgb(245, 5, 53));
-  }
-  
-  
-  
-  section {
-    padding: 100px 0;
-  }
-  
-  .max-width {
-    max-width: 2000px;
-    padding: 0 80px;
-    margin: auto;
-  }
-  
-  
-  .ABOUT-RTO .ABOUT-RTO-content,
-  .ACTS-RULES.ACTS-RULES-content,
-  .SERVICE .CITIZEN-SERVICE-content,
-  .ROAD_SAFETY.ROAD_SAFETY-content,
-  .CONTACT.contact-content {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  section .title {
-    position: relative;
-    text-align: center;
-    font-size: 40px;
-    font-weight: 500;
-    margin-bottom: 60px;
-    padding-bottom: 20px;
-    font-family: "Ubuntu", sans-serif;
-  }
-  
-  section .title::before {
-    content: "";
-    position: absolute;
-    bottom: 0px;
-    left: 50%;
-    width: 180px;
-    height: 3px;
-    transform: translateX(-50%);
-  }
-  
-  section .title::after {
-    position: absolute;
-    bottom: -8px;
-    left: 50%;
-    font-size: 20px;
-    color: #1e3551;
-    padding: 0 5px;
-    transform: translateX(-50%);
-  }
-  
-  
-  .navbar {
-    position: fixed;
-    width: 100%;
-    z-index: 999;
-    padding: 30px 0;
-    font-family: "Ubuntu", sans-serif;
-    transition: all 0.3s ease;
-    background-color: rgb(15, 1, 1);
-    z-index:1000;
-  }
-  
-  .navbar.sticky {
-    padding: 15px 0;
-    background: #fcd4d4;
-  }
-  
-  .navbar .max-width {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  .navbar .logo {
-  font-size: 35px;
-  font-weight: bold;
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-   color: whitesmoke;
-   border-style: ridge;
-   border-width: 6PX;
-   border-color:antiquewhite;
-  }
-  .navbar .logo a {
-    color: rgb(255, 255, 255);
-    font-size: 35px;
-    font-weight: 600;
-  }
-  .navbar .menu li a {
-    display: block;
-    color: hsl(0, 0%, 100%);
-    font-size: 18px;
-    font-weight: 500;
-    margin-left: 25px;
-    transition: color 0.3s ease;
-  }
-  
-  .navbar.sticky .logo a span {
-    color: hsl(0, 0%, 100%);
-  }
-  
-  .navbar .menu li {
-    list-style: none;
-    display: inline-block;
-  }
-  
-  .navbar .menu li a {
-    display: block;
-    color: hsl(0, 0%, 100%);
-    font-size: 18px;
-    font-weight: 500;
-    margin-left: 25px;
-    transition: color 0.3s ease;
-  }
-  
-  .navbar .menu li a:hover {
-    color:whitesmoke
-  }
-  
-  .navbar.sticky .menu li a:hover {
-    color: whitesmoke;
-  }
-  
-  
-  
-  .menu-btn {
-    color: rgb(24, 2, 2);
-    font-size: 23px;
-    cursor: pointer;
-    display: none;
-  }
-  
-  .scroll-up-btn {
-    position: fixed;
-    height: 45px;
-    width: 42px;
-    background:#000000;
-    right: 30px;
-    bottom: 10px;
-    text-align: center;
-    line-height: 45px;
-    color: #fff;
-    z-index: 9999;
-    font-size: 30px;
-    border-radius: 6px;
-    border-bottom-width: 2px;
-    cursor: pointer;
-    opacity: 0;
-    pointer-events: none;
-    transition: all 0.3s ease;
-  }
-  
-  .scroll-up-btn.show {
-    bottom: 30px;
-    opacity: 1;
-    pointer-events: auto;
-  }
-  
-  .scroll-up-btn:hover {
-    filter: brightness(90%);
-  }.home {
-    display: flex;
-   background-image: url("about1.jpg");
-    color: rgb(15, 1, 1);
- font-family: "Ubuntu", sans-serif;
-  
-    text-align: center;
-  
-  }
-  .home .max-width {
-    width: 100%;
-    display: flex;
-  }
-  .home .max-height{
-    height:100px;
-  }
-  
-  .home .max-width .row {
-    margin-right: 0;
-  }
-  
-  .home .home-content .img {
-   margin-left: 1000px;
-    align-items: center;
-  }
-  
-  
-  
-  .home .home-content .text-2 {
-    text-align:center;
-    font-size: 40px;
-    font-weight: 60;
-    margin-left: -3px;
-  color:black;
-   font-family: Georgia, 'Times New Roman', Times, serif;
-  text-decoration: underline;
-   
-  }
-  .home .home-content .text-3 {
-    text-align:center;
-    margin-right:700px;
-    font-size: 30px;
-    margin: 5px 0;
-    color:#000000 ;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    text-decoration: underline;
-    
-  }
-  .content3{
-    border-style: ridge;
-    border-width: 7px;
-   border-color: #000000;
-  }
-  .content3 .acts{
-    text-align: center;
-    text-decoration: underline;
-    font-size: 17px;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    
-  }
-  .content3 .design{
-    text-align: justify;
-    margin-right: 8vw;
-    margin-left: 8vw;
-    font-size: 17px;
-  }
-  .content3 .acts1{
-    text-align: center;
-    text-decoration: underline;
-    font-size: 22px;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  }
-  .content3 .design1{
-    text-align: justify;
-    margin-right: 8vw;
-    margin-left: 8vw;
-    font-size: 17px;
-  }
-  .content3 .aditya2{
-    text-align: center;
-    font-size: 18px;
-  }
-  .content3 .acts2{
-    text-align: center;
-    text-decoration: underline;
-    font-size: 27px;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  }
-  .content3 .design2{
-    text-align: justify;
-    margin-right: 8vw;
-    margin-left: 8vw;
-    font-size: 17px;
-  }
-  .content3 .rules{
-    text-align: center;
-    text-decoration: underline;
-    font-size: 27px;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  
-  }
-  *{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: "Poppins", sans-serif;
-  }
-  
-  a {
-    color: #fff;
-    text-decoration: none;
-  }
-  
-  .footer {
-    width: 100%;
-    height: 250px;
-  
-    padding: 10px;
-  
-    background-color: #252525;
-    color: #fff;
-  
-    display: flex;
-    justify-content: space-evenly;
-    align-items: flex-start;
-    flex-wrap: wrap;
-  }
-  
-  .col {
-    padding: 20px 0;
-  }
-  
-  .footer-logo {
-    width: 200px;
-    height: 100%;
-  }
-  
-  .footer-header {
-    font-size: 18px;
-    position: relative;
-  }
-  
-  .list {
-    list-style: none;
-  }
-  
-  .list li {
-    font-size: 14px;
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      text-decoration: none;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+
+
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+
+    .loader_bg {
+      position: fixed;
+      z-index: 9999999;
+      background: #fff;
+      width: 100%;
+      height: 100%;
+    }
+
+    .loader {
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .loader img {
+      width: 280px;
+    }
+
+
+    ::-webkit-scrollbar-thumb {
+      border-radius: 12px;
+      background: linear-gradient(135deg, #f57308, #fff, rgb(11, 242, 7));
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(135deg, #09418a, #fff, rgb(245, 5, 53));
+    }
+
+
+
+    section {
+      padding: 100px 0;
+    }
+
+    .max-width {
+      max-width: 2000px;
+      padding: 0 80px;
+      margin: auto;
+    }
+
+
+    .ABOUT-RTO .ABOUT-RTO-content,
+    .ACTS-RULES.ACTS-RULES-content,
+    .SERVICE .CITIZEN-SERVICE-content,
+    .ROAD_SAFETY.ROAD_SAFETY-content,
+    .CONTACT.contact-content {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    section .title {
+      position: relative;
+      text-align: center;
+      font-size: 40px;
+      font-weight: 500;
+      margin-bottom: 60px;
+      padding-bottom: 20px;
+      font-family: "Ubuntu", sans-serif;
+    }
+
+    section .title::before {
+      content: "";
+      position: absolute;
+      bottom: 0px;
+      left: 50%;
+      width: 180px;
+      height: 3px;
+      transform: translateX(-50%);
+    }
+
+    section .title::after {
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      font-size: 20px;
+      color: #1e3551;
+      padding: 0 5px;
+      transform: translateX(-50%);
+    }
+
+
+    .navbar {
+      position: fixed;
+      width: 100%;
+      z-index: 999;
+      padding: 30px 0;
+      font-family: "Ubuntu", sans-serif;
+      transition: all 0.3s ease;
+      background-color: rgb(15, 1, 1);
+      z-index: 1000;
+    }
+
+    .navbar.sticky {
+      padding: 15px 0;
+      background: #fcd4d4;
+    }
+
+    .navbar .max-width {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .navbar .logo {
+      font-size: 35px;
+      font-weight: bold;
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      color: whitesmoke;
+      border-style: ridge;
+      border-width: 6PX;
+      border-color: antiquewhite;
+    }
+
+    .navbar .logo a {
+      color: rgb(255, 255, 255);
+      font-size: 35px;
+      font-weight: 600;
+    }
+
+    .navbar .menu li a {
+      display: block;
+      color: hsl(0, 0%, 100%);
+      font-size: 18px;
+      font-weight: 500;
+      margin-left: 25px;
+      transition: color 0.3s ease;
+    }
+
+    .navbar.sticky .logo a span {
+      color: hsl(0, 0%, 100%);
+    }
+
+    .navbar .menu li {
+      list-style: none;
+      display: inline-block;
+    }
+
+    .navbar .menu li a {
+      display: block;
+      color: hsl(0, 0%, 100%);
+      font-size: 18px;
+      font-weight: 500;
+      margin-left: 25px;
+      transition: color 0.3s ease;
+    }
+
+    .navbar .menu li a:hover {
+      color: whitesmoke
+    }
+
+    .navbar.sticky .menu li a:hover {
+      color: whitesmoke;
+    }
+
+
+
+    .menu-btn {
+      color: rgb(24, 2, 2);
+      font-size: 23px;
+      cursor: pointer;
+      display: none;
+    }
+
+    .scroll-up-btn {
+      position: fixed;
+      height: 45px;
+      width: 42px;
+      background: #000000;
+      right: 30px;
+      bottom: 10px;
+      text-align: center;
+      line-height: 45px;
+      color: #fff;
+      z-index: 9999;
+      font-size: 30px;
+      border-radius: 6px;
+      border-bottom-width: 2px;
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s ease;
+    }
+
+    .scroll-up-btn.show {
+      bottom: 30px;
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .scroll-up-btn:hover {
+      filter: brightness(90%);
+    }
+
+    .home {
+      display: flex;
+      background-image: url("about1.jpg");
+      color: rgb(15, 1, 1);
+      font-family: "Ubuntu", sans-serif;
+
+      text-align: center;
+
+    }
+
+    .home .max-width {
+      width: 100%;
+      display: flex;
+    }
+
+    .home .max-height {
+      height: 100px;
+    }
+
+    .home .max-width .row {
+      margin-right: 0;
+    }
+
+    .home .home-content .img {
+      margin-left: 1000px;
+      align-items: center;
+    }
+
+
+
+    .home .home-content .text-2 {
+      text-align: center;
+      font-size: 40px;
+      font-weight: 60;
+      margin-left: -3px;
+      color: black;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      text-decoration: underline;
+
+    }
+
+    .home .home-content .text-3 {
+      text-align: center;
+      margin-right: 700px;
+      font-size: 30px;
+      margin: 5px 0;
+      color: #000000;
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+      text-decoration: underline;
+
+    }
+
+    .content3 {
+      border-style: ridge;
+      border-width: 7px;
+      border-color: #000000;
+    }
+
+    .content3 .acts {
+      text-align: center;
+      text-decoration: underline;
+      font-size: 17px;
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+    }
+
+    .content3 .design {
+      text-align: justify;
+      margin-right: 8vw;
+      margin-left: 8vw;
+      font-size: 17px;
+    }
+
+    .content3 .acts1 {
+      text-align: center;
+      text-decoration: underline;
+      font-size: 22px;
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+
+    .content3 .design1 {
+      text-align: justify;
+      margin-right: 8vw;
+      margin-left: 8vw;
+      font-size: 17px;
+    }
+
+    .content3 .aditya2 {
+      text-align: center;
+      font-size: 18px;
+    }
+
+    .content3 .acts2 {
+      text-align: center;
+      text-decoration: underline;
+      font-size: 27px;
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+
+    .content3 .design2 {
+      text-align: justify;
+      margin-right: 8vw;
+      margin-left: 8vw;
+      font-size: 17px;
+    }
+
+    .content3 .rules {
+      text-align: center;
+      text-decoration: underline;
+      font-size: 27px;
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+    }
+
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+    }
+
+    a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .footer {
+      width: 100%;
+      height: 250px;
+
+      padding: 10px;
+
+      background-color: #252525;
+      color: #fff;
+
+      display: flex;
+      justify-content: space-evenly;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+
+    .col {
+      padding: 20px 0;
+    }
+
+    .footer-logo {
+      width: 200px;
+      height: 100%;
+    }
+
+    .footer-header {
+      font-size: 18px;
+      position: relative;
+    }
+
+    .list {
+      list-style: none;
+    }
+
+    .list li {
+      font-size: 14px;
+    }
+  </style>
 </head>
+
 <body>
-    <div class="scroll-up-btn">
-        <i class="fas fa-angle-up"></i>
+  <div class="scroll-up-btn">
+    <i class="fas fa-angle-up"></i>
+  </div>
+
+  <!-- --x--------------------------- Scroll Bar ---------------------------x-- -->
+
+  <!-- ------------------------------ Header ------------------------------ -->
+
+  <nav class="navbar">
+    <div class="max-width">
+      <div class="logo"><a href="#"><b>RTO</b></a></div>
+      <ul class="menu">
+        <li><a href="/" class="menu-btn"><strong>HOME</strong></a></li>
+        <li><a href="/about" class="menu-btn"><strong>ABOUT</strong></a></li>
+        <li><a href="/acts" class="menu-btn"><strong>ACTS&RULES</strong></a></li>
+        <li><a href="/services" class="menu-btn"><strong>CITIZEN SERVICE</strong></a></li>
+        <li><a href="/safety" class="menu-btn"><strong>ROAD SAFETY</strong></a></li>
+        <li><a href="/complaint" class="menu-btn"><strong>COMPLAINTS</strong></a></li>
+        <li><a href="/contact" class="menu-btn"><strong>CONTACT</strong></a></li>
+      </ul>
+      <div class="menu-btn">
+        <i class="fas fa-bars"></i>
       </div>
-    
-      <!-- --x--------------------------- Scroll Bar ---------------------------x-- -->
-    
-      <!-- ------------------------------ Header ------------------------------ -->
-    
-      <nav class="navbar">
-        <div class="max-width">
-          <div class="logo"><a href="#"><b>RTO</b></a></div>
-          <ul class="menu">
-            <li><a href="/"class="menu-btn"><strong>HOME</strong></a></li>
-           <li><a href="/about" class="menu-btn"><strong>ABOUT</strong></a></li>
-            <li><a href="/acts" class="menu-btn"><strong>ACTS&RULES</strong></a></li>
-            <li><a href="/services" class="menu-btn"><strong>CITIZEN SERVICE</strong></a></li>
-            <li><a href="/safety" class="menu-btn"><strong>ROAD SAFETY</strong></a></li>
-            <li><a href="/complaint" class="menu-btn"><strong>COMPLAINTS</strong></a></li>
-            <li><a href="/contact" class="menu-btn"><strong>CONTACT</strong></a></li>
-          </ul>
-          <div class="menu-btn">
-            <i class="fas fa-bars"></i>
-          </div>
-      
-        </div>
-      </nav>
-      <section class="home" id="home">
-        <div class="max-width">
-            <div class="max-height">
-          <div class="home-content">
-           <div  class="img" ><img src="logo.jpg" align="right" ></div>
-          <br><br><br>  <div class="text-2">REGIONAL TRANSPORT OFFICE</div>
-            <div class="text-3">MAHARAHSTRA</div></div>
-        </div>
-    </div>  
+
     </div>
-        </section>
-        <form action="/acts">
-         <!--------acts and rules---------->
-       <div class="content3">
-        <div class="acts">
-         <br> <h1><strong>What is Motor Vehicle Act?</strong></h1>
-        </div>
-        <br>
-        <div class="design">
-          <p>
-            The Motor Vehicles Act was passed in the year 1988 and regulates almost all aspects of road transport vehicles. It provides detailed guidelines on licensing of the drivers and conductors, registration of motor vehicles, the provision on controlling their permits, traffic regulations, related insurances, liabilities, and penalties. The motor vehicle act makes it mandatory for any driver to have a valid driving licence and no vehicle can be driven without being registered under the motor vehicle act.
-
-          </p>
-
-        </div><br>
-        <div class="acts1">
-          <h2><strong>What are the changes in the Motor Vehicle Act 2019?</strong></h2>
-        </div><br>
-        <div class="design1">
-          <p>
-            Here are significant changes in the new Motor Vehicle Act and driving errors are going to make a huge dent in your monthly budget and some of them may cost you the same or more than your monthly fuel bill.
-            Here is a list of the important new motor vehicle laws:
-
-            Penalties- Some penalties are enhanced, and some new penalties are introduced. Check the complete list of new traffic fines.
-          </p>
-         </div>
-         
-         <div class="aditya2">
-          <ul>
-              <li><a href="https://www.godigit.com/traffic-rules/revised-traffic-violation-fines-2019">NEW TRAFFIC FINES</a></li>
-          </ul>
-       </div><br>
-       <div class="acts2">
-        <h3><strong>What are the offences covered under the Motor Vehicle Act?</strong></h3>
-       </div><br>
-       <div class="design2">
-        
-         <li>Under section 3 r/w 181 Motor Vehicle Act: A person driving his vehicle without a valid licence</li>
-         <li>Under section 5 r/w 180 Motor Vehicle Act:A person allowing his vehicle to be driven by a person who does not have a valid licence </li>
-         <li>Under section 130(3) r/w 177 Motor Vehicle Act:A person not having all their relevant documents</li>
-         <li>Under section 130 r/w 177 Motor Vehicle Act:A person driving his vehicle without a valid permit</li>
-         <li>Under section 4 r/s 181 Motor Vehicle Act:A minor driving the vehicle</li>
-        <li>Under section 129 r/w 177 Motor Vehicle Act:A person riding without a helmet</li>
-        </div><br>
-        <div class="rules">
-          <h3>Why increase in the fine for breaking traffic rules?</h3>
-        </div><br>
-        <div class="design2">
-         <p>We all have come across a person on the road who will try to turn a car around a full 180 degrees, in the middle of rush hour traffic, causing a long-lasting jam. Then a person who stops his car in the middle of the road for dropping someone and bidding goodbyes and also those who will overtake you from the right at high speed, aware that it isn’t safe to do that and of course, there are many who never wear seat belts. Traffic rules are for all these people, and they are best in breaking these rules. 
-
-          Increase in the fine is for such people to be conscious all the time on the road and so that they know if they will break the rule now it will be a big jolt on their pocket. </p>
-
+  </nav>
+  <section class="home" id="home">
+    <div class="max-width">
+      <div class="max-height">
+        <div class="home-content">
+          <div class="img"><img src="logo.jpg" align="right"></div>
+          <br><br><br>
+          <div class="text-2">REGIONAL TRANSPORT OFFICE</div>
+          <div class="text-3">MAHARAHSTRA</div>
         </div>
       </div>
+    </div>
+    </div>
+  </section>
+  <form action="/acts">
+    <!--------acts and rules---------->
+    <div class="content3">
+      <div class="acts">
+        <br>
+        <h1><strong>What is Motor Vehicle Act?</strong></h1>
+      </div>
+      <br>
+      <div class="design">
+        <p>
+          The Motor Vehicles Act was passed in the year 1988 and regulates almost all aspects of road transport
+          vehicles. It provides detailed guidelines on licensing of the drivers and conductors, registration of motor
+          vehicles, the provision on controlling their permits, traffic regulations, related insurances, liabilities,
+          and penalties. The motor vehicle act makes it mandatory for any driver to have a valid driving licence and no
+          vehicle can be driven without being registered under the motor vehicle act.
+
+        </p>
+
+      </div><br>
+      <div class="acts1">
+        <h2><strong>What are the changes in the Motor Vehicle Act 2019?</strong></h2>
+      </div><br>
+      <div class="design1">
+        <p>
+          Here are significant changes in the new Motor Vehicle Act and driving errors are going to make a huge dent in
+          your monthly budget and some of them may cost you the same or more than your monthly fuel bill.
+          Here is a list of the important new motor vehicle laws:
+
+          Penalties- Some penalties are enhanced, and some new penalties are introduced. Check the complete list of new
+          traffic fines.
+        </p>
+      </div>
+
+      <div class="aditya2">
+        <ul>
+          <li><a href="https://www.godigit.com/traffic-rules/revised-traffic-violation-fines-2019">NEW TRAFFIC FINES</a>
+          </li>
+        </ul>
+      </div><br>
+      <div class="acts2">
+        <h3><strong>What are the offences covered under the Motor Vehicle Act?</strong></h3>
+      </div><br>
+      <div class="design2">
+
+        <li>Under section 3 r/w 181 Motor Vehicle Act: A person driving his vehicle without a valid licence</li>
+        <li>Under section 5 r/w 180 Motor Vehicle Act:A person allowing his vehicle to be driven by a person who does
+          not have a valid licence </li>
+        <li>Under section 130(3) r/w 177 Motor Vehicle Act:A person not having all their relevant documents</li>
+        <li>Under section 130 r/w 177 Motor Vehicle Act:A person driving his vehicle without a valid permit</li>
+        <li>Under section 4 r/s 181 Motor Vehicle Act:A minor driving the vehicle</li>
+        <li>Under section 129 r/w 177 Motor Vehicle Act:A person riding without a helmet</li>
+      </div><br>
+      <div class="rules">
+        <h3>Why increase in the fine for breaking traffic rules?</h3>
+      </div><br>
+      <div class="design2">
+        <p>We all have come across a person on the road who will try to turn a car around a full 180 degrees, in the
+          middle of rush hour traffic, causing a long-lasting jam. Then a person who stops his car in the middle of the
+          road for dropping someone and bidding goodbyes and also those who will overtake you from the right at high
+          speed, aware that it isn’t safe to do that and of course, there are many who never wear seat belts. Traffic
+          rules are for all these people, and they are best in breaking these rules.
+
+          Increase in the fine is for such people to be conscious all the time on the road and so that they know if they
+          will break the rule now it will be a big jolt on their pocket. </p>
+
+      </div>
+    </div>
 
     <div class="footer">
 
-            <div>
-             
-              <img src="logo2footer.jpg" alt="RTO Logo" class="footer-logo" />
-            </div>
-            <div class="col">
-              <h4 class="footer-header">Pages</h4>
-              <h4 class="footer-header"></h4>
-      
-              <br />
-      
-              <ul class="list">
-                <li><a href="#">Home Page</a></li>
-                <li><a href="#">Services Page</a></li>
-                <li><a href="#">About Page</a></li>
-                <li><a href="#">Contact Page</a></li>
-              </ul>
-            </div>
-            <div class="col">
-              <h4 class="footer-header">Get Help</h4>
-      
-              <br />
-      
-              <ul class="list">
-                <li><a href="#">FAQ</a></li>
-                <li><a href="#">Account Recovery</a></li>
-                <li><a href="#">Payment Options</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        </form>
+      <div>
 
-        
+        <img src="logo2footer.jpg" alt="RTO Logo" class="footer-logo" />
+      </div>
+      <div class="col">
+        <h4 class="footer-header">Pages</h4>
+        <h4 class="footer-header"></h4>
+
+        <br />
+
+        <ul class="list">
+          <li><a href="#">Home Page</a></li>
+          <li><a href="#">Services Page</a></li>
+          <li><a href="#">About Page</a></li>
+          <li><a href="#">Contact Page</a></li>
+        </ul>
+      </div>
+      <div class="col">
+        <h4 class="footer-header">Get Help</h4>
+
+        <br />
+
+        <ul class="list">
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Account Recovery</a></li>
+          <li><a href="#">Payment Options</a></li>
+        </ul>
+      </div>
+    </div>
+    </div>
+  </form>
+
+
 
 </body>
+
 </html>

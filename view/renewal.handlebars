@@ -1,178 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
-*{
-    margin: 0;
-    padding: 0;
-    
-    font-family: 'Poppins', sans-serif;
-}
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+
+            font-family: 'Poppins', sans-serif;
+        }
 
 
-body {
-   display: flex;
-    height: 100vh;
-    justify-content: center;
-    align-items: center;
-    padding-top: 1px;
-    background-color: hwb(227 63% 30%);
-}
+        body {
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            padding-top: 1px;
+            background-color: hwb(227 63% 30%);
+        }
 
-.container{
-    max-width: 700px;
-    width: 100%;
-    background: #fff;
-    padding: 55px 35px;
-    border-radius: 5px;
-}
+        .container {
+            max-width: 700px;
+            width: 100%;
+            background: #fff;
+            padding: 55px 35px;
+            border-radius: 5px;
+        }
 
-.container .title{
-    font-size: 25px;
-    font-weight: 500;
-    position: relative;
-}
+        .container .title {
+            font-size: 25px;
+            font-weight: 500;
+            position: relative;
+        }
 
-.container .title::before{
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 3px;
-    width: 30px;
-    background-color: #4070f4;
-}
+        .container .title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 3px;
+            width: 30px;
+            background-color: #4070f4;
+        }
 
-.container form .user-details{
-     display: flex;
-     flex-wrap: wrap;
-     justify-content: space-between;
-}
+        .container form .user-details {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
 
-form .user-details .input-box{
-    margin: 20px 0 12px 0;
-    width: calc(100% / 2 - 20px);
+        form .user-details .input-box {
+            margin: 20px 0 12px 0;
+            width: calc(100% / 2 - 20px);
 
-}
+        }
 
-.user-details .input-box .details{
-    display: block;
-    font-weight: 500;
-    margin-bottom: 5px;
-}
+        .user-details .input-box .details {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
 
-.user-details .input-box input{
-    height: 30px;
-    width: 95%;
-    outline: none;
-    border-radius: 5px;
-    border: 1px solid grey;
-    padding-left: 13px;
-    font-size: 15px;
-}
+        .user-details .input-box input {
+            height: 30px;
+            width: 95%;
+            outline: none;
+            border-radius: 5px;
+            border: 1px solid grey;
+            padding-left: 13px;
+            font-size: 15px;
+        }
 
-form .user-details .button{
-    padding-top: 35px;
-    padding-left: 14px;
-    
-}
+        form .user-details .button {
+            padding-top: 35px;
+            padding-left: 14px;
 
-.btn{
-    text-align: center;
-    justify-content: space-between;
-    width: 200px;
-    height: 45px;
-    font-size: 18px;
-    background-color: #4070f4;
-    border: none;
-    border-radius: 5px;
-    color: white;
-    cursor: pointer;
-    font-family: Arial;
+        }
 
-}
+        .btn {
+            text-align: center;
+            justify-content: space-between;
+            width: 200px;
+            height: 45px;
+            font-size: 18px;
+            background-color: #4070f4;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            font-family: Arial;
 
-
-.file-upload-field{
-    
-    line-height: 35px;
-    font-size: 13px;
-    width: 35%;
-    border-radius: 45px;
-}
+        }
 
 
+        .file-upload-field {
 
-.name{
-    line-height: 35px;
-    font-size: 15px;
-    width: 50%;
-    border-radius: 45px;
-    outline: none;
-    
-}
-   </style>
-   <title>Document</title>
+            line-height: 35px;
+            font-size: 13px;
+            width: 35%;
+            border-radius: 45px;
+        }
+
+
+
+        .name {
+            line-height: 35px;
+            font-size: 15px;
+            width: 50%;
+            border-radius: 45px;
+            outline: none;
+
+        }
+    </style>
+    <title>Document</title>
 </head>
+
 <body>
     <div class="container">
-        <div class="title">APPLICATION FOR DL RENEWAL</div> 
+        <div class="title">APPLICATION FOR DL RENEWAL</div>
         <form action="/renewal">
             <div class="user-details">
-                <div class="input-box"> 
+                <div class="input-box">
                     <span class="details">DL-NUMBER</span>
-                     <input type="text" name="Number"class="name" placeholder="DL number" required>
-                 </div>
+                    <input type="text" name="Number" class="name" placeholder="DL number" required>
+                </div>
 
-                 <div class="input-box"> 
+                <div class="input-box">
                     <span class="details">Date of Birth</span>
-                     <input type="date" name="Date" class="name" placeholder="dd-mm-yyyy">
-                 </div>
-                
-            
-                 <div class="input-box"> 
+                    <input type="date" name="Date" class="name" placeholder="dd-mm-yyyy">
+                </div>
+
+
+                <div class="input-box">
                     <span class="details">Date of last license expiry</span>
-                     <input type="date" name="lastdate"class="name" placeholder="dd-mm-yyyy" required>
-                 </div>
-               
-                 <div class="input-box"> 
+                    <input type="date" name="lastdate" class="name" placeholder="dd-mm-yyyy" required>
+                </div>
+
+                <div class="input-box">
                     <span class="details">E-mail id</span>
-                     <input type="text" name="Email"  class="name" placeholder="Enter your email" required>
-                 </div>
-                 
+                    <input type="text" name="Email" class="name" placeholder="Enter your email" required>
+                </div>
 
-                 <div class="input-box"> 
+
+                <div class="input-box">
                     <span class="details">Mobile number</span>
-                     <input type="text" name="Mobilenumber" class="name" placeholder="Enter your number" required>
-                 </div>
-               
+                    <input type="text" name="Mobilenumber" class="name" placeholder="Enter your number" required>
+                </div>
 
-                 <div class="input-box"> 
+
+                <div class="input-box">
                     <span class="details">Gender</span>
-                    <select required name="gender"class="name">
+                    <select required name="gender" class="name">
                         <option disabled selected>Select Gender</option>
                         <option>Male</option>
                         <option>Female</option>
                         <option>Prefer not to say</option>
 
-                    </select></div>
-           
+                    </select>
+                </div>
+
                 <div class="button">
-                  <input type="submit" class="btn" value="Submit">
+                    <input type="submit" class="btn" value="Submit">
                 </div>
 
         </form>
-            
-            
-    </div>   
 
-     
-                
 
-    </body>
+    </div>
+
+
+
+
+</body>
+
 </html>
