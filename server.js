@@ -1,7 +1,7 @@
 
 let connection = require("./config/connection").connection;
 let express = require("express");
-let port = 4000;
+let port = process.env.PORT || 4000;
 let app = express();
 const complaint = require('./routes/complaint');
 const register = require('./routes/register');
@@ -33,6 +33,8 @@ app.use("/safety", safety);
 app.use("/about", about);
 app.use("/licence1", licence);
 app.use("/contacts1", contact);
+app.use(express.static(__dirname + "/public"));
+
 
 // app.set('view ensgine', 'hbs')
 // app.set('views', './view');
